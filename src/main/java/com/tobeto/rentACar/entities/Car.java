@@ -17,7 +17,7 @@ public class Car {
     private String plate;
 
     @Column(name = "daily_price")
-    private double daily_price;
+    private double dailyPrice;
 
     @Column(name = "state")
     private boolean state;

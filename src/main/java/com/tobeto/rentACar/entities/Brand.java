@@ -18,4 +18,5 @@ public class Brand {
 
     @OneToMany(mappedBy = "brand")
     private List<Model> models;
+
 }
