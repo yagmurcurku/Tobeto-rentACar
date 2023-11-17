@@ -2,6 +2,8 @@ package com.tobeto.rentACar.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "cars")
 public class Car {
@@ -24,4 +26,6 @@ public class Car {
     @JoinColumn(name = "model_id")
     private Model model;
 
+    @OneToMany(mappedBy = "car")
+    private List<Rental> rentals;
 }
