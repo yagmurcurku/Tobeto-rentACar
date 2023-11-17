@@ -24,4 +24,12 @@ public class RentalDetail {
     @JoinColumn(name = "rental_id", unique = true)
     private Rental rental;
 
+    @ManyToOne
+    @JoinColumn(name = "location_pickup_id")
+    private Location locationPickup;
+
+    @ManyToOne
+    @JoinColumn(name = "location_delivery_id")
+    private Location locationDelivery;
+
 }

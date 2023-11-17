@@ -26,4 +26,5 @@ public class Rental {
 
     @OneToMany(mappedBy = "rental")
     private List<RentalDetail> rentalDetails;
+
 }
