@@ -1,4 +1,4 @@
-package com.tobeto.rentACar;
+package com.tobeto.rentACar.entities;
 
 import jakarta.persistence.*;
 

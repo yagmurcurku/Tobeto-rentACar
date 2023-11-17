@@ -1,5 +1,6 @@
-package com.tobeto.rentACar;
+package com.tobeto.rentACar.entities;
 
+import com.tobeto.rentACar.entities.Car;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -20,4 +21,8 @@ public class Model {
 
     @OneToMany(mappedBy = "model")
     private List<Car> cars;
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
 }
