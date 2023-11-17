@@ -24,4 +24,6 @@ public class Rental {
     @OneToMany(mappedBy = "rental")
     private List<PaymentDetail> paymentDetails;
 
+    @OneToMany(mappedBy = "rental")
+    private List<RentalDetail> rentalDetails;
 }
