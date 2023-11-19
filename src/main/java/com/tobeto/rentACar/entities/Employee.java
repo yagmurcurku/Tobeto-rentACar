@@ -40,4 +40,9 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee")
     private List<RentalDetail> rentalDetails;
+
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
+
 }

@@ -28,4 +28,6 @@ public class Location {
     @OneToMany(mappedBy = "locationDelivery")
     private List<RentalDetail> rentalDetailsLocationDelivery;
 
+    @OneToMany(mappedBy = "location")
+    private List<Employee> employees;
 }
