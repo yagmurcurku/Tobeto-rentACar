@@ -32,4 +32,8 @@ public class RentalDetail {
     @JoinColumn(name = "location_delivery_id")
     private Location locationDelivery;
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
 }
