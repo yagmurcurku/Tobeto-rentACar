@@ -22,8 +22,9 @@ public class PaymentDetail {
     @Column(name = "invoice_date")
     private LocalDate invoiceDate;
 
-    @ManyToOne
-    @JoinColumn(name = "rental_id", unique = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rental_id", referencedColumnName = "id")
     private Rental rental;
+
 
 }

@@ -21,10 +21,10 @@ public class Rental {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "rental")
-    private List<PaymentDetail> paymentDetails;
+    @OneToOne(mappedBy = "rental")
+    private PaymentDetail paymentDetail;
 
-    @OneToMany(mappedBy = "rental")
-    private List<RentalDetail> rentalDetails;
+    @OneToOne(mappedBy = "rental")
+    private RentalDetail rentalDetail;
 
 }

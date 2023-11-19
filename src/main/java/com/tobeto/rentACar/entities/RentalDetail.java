@@ -20,8 +20,8 @@ public class RentalDetail {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @ManyToOne
-    @JoinColumn(name = "rental_id", unique = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rental_id", referencedColumnName = "id")
     private Rental rental;
 
     @ManyToOne
