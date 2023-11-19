@@ -45,4 +45,7 @@ public class Employee {
     @JoinColumn(name = "location_id")
     private Location location;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 }

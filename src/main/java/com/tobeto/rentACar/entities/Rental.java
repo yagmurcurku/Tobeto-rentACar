@@ -28,3 +28,4 @@ public class Rental {
     private RentalDetail rentalDetail;
 
 }
+
