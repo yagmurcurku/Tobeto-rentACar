@@ -16,15 +16,16 @@ public class Invoice {
     @Column(name = "total_price")
     private double totalPrice;
 
-    @Column(name = "payment_method")
-    private String paymentMethod;
-
     @Column(name = "invoice_date")
     private LocalDate invoiceDate;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rental_id", referencedColumnName = "id")
     private Rental rental;
+
+    @ManyToOne
+    @JoinColumn(name = "payment_method_id")
+    private PaymentMethod paymentMethod;
 
 
 }
