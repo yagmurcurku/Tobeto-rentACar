@@ -22,7 +22,7 @@ public class Rental {
     private User user;
 
     @OneToOne(mappedBy = "rental")
-    private PaymentDetail paymentDetail;
+    private Invoice invoice;
 
     @OneToOne(mappedBy = "rental")
     private RentalDetail rentalDetail;
