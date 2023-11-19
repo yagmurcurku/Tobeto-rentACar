@@ -27,5 +27,8 @@ public class Invoice {
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
 }

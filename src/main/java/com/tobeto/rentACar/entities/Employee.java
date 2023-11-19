@@ -3,6 +3,7 @@ package com.tobeto.rentACar.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -34,5 +35,6 @@ public class Employee {
     @Column(name = "identification_number")
     private String identificationNumber;
 
-
+    @OneToMany(mappedBy = "employee")
+    private List<Invoice> invoices;
 }
