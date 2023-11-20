@@ -1,5 +1,6 @@
 package com.tobeto.rentACar.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tobeto.rentACar.entities.Car;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ public class Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
@@ -28,6 +30,7 @@ public class Model {
     private int year;
 
     @OneToMany(mappedBy = "model")
+    @JsonIgnore
     private List<Car> cars;
 
     @ManyToOne

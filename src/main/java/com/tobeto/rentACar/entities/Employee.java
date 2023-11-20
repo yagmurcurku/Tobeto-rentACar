@@ -1,5 +1,6 @@
 package com.tobeto.rentACar.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -44,9 +45,11 @@ public class Employee {
     private String identificationNumber;
 
     @OneToMany(mappedBy = "employee")
+    @JsonIgnore
     private List<Invoice> invoices;
 
     @OneToMany(mappedBy = "employee")
+    @JsonIgnore
     private List<RentalDetail> rentalDetails;
 
     @ManyToOne
