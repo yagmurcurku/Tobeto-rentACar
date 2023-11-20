@@ -1,11 +1,19 @@
 package com.tobeto.rentACar.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "invoices")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Invoice {
 
     @Id

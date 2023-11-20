@@ -2,11 +2,19 @@ package com.tobeto.rentACar.entities;
 
 import com.tobeto.rentACar.entities.Car;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Table(name = "models")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Model {
 
     @Id

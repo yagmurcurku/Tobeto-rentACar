@@ -1,12 +1,20 @@
 package com.tobeto.rentACar.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "employees")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 
     @Id
@@ -48,4 +56,5 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
 }

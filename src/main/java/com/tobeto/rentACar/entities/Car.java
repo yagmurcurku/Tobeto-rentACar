@@ -1,11 +1,16 @@
 package com.tobeto.rentACar.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "cars")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Car {
 
     @Id
