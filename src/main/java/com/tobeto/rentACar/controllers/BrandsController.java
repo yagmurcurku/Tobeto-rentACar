@@ -32,7 +32,10 @@ public class BrandsController {
 
     @PutMapping
     public void update(@RequestBody Brand brand){
-
+        Brand brandToUpdate = brandRepository.findById(brand.getId()).orElseThrow();
+        brandToUpdate.setName(brand.getName());
+        brandToUpdate.setModels(brand.getModels());
+        brandRepository.save(brandToUpdate);
     }
 
     @DeleteMapping("{id}")
