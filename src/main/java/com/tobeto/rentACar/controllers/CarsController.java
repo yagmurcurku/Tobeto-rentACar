@@ -35,7 +35,7 @@ public class CarsController {
     public void update(@RequestBody Car car){
         Car carToUpdate = carRepository.findById(car.getId()).orElseThrow();
         carToUpdate.setModel(car.getModel());
-        //carToUpdate.setState(car);
+        carToUpdate.setState(car.isState());
         carToUpdate.setPlate(car.getPlate());
         carToUpdate.setRentals(car.getRentals());
         carToUpdate.setDailyPrice(car.getDailyPrice());

@@ -1,5 +1,6 @@
 package com.tobeto.rentACar.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +31,7 @@ public class RentalDetail {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rental_id", referencedColumnName = "id")
+    @JsonIgnore
     private Rental rental;
 
     @ManyToOne

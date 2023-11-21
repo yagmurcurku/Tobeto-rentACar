@@ -22,8 +22,8 @@ public class PaymentMethodsController {
     }
 
     @GetMapping("{id}")
-    public PaymentMethod getById(@PathVariable PaymentMethod paymentMethod){
-        return paymentMethodRepository.findById(paymentMethod.getId()).orElseThrow();
+    public PaymentMethod getById(@PathVariable int id){
+        return paymentMethodRepository.findById(id).orElseThrow();
     }
 
     @PostMapping
@@ -36,6 +36,12 @@ public class PaymentMethodsController {
         PaymentMethod paymentMethodToUpdate = paymentMethodRepository.findById(paymentMethod.getId()).orElseThrow();
         paymentMethodToUpdate.setName(paymentMethod.getName());
         paymentMethodToUpdate.setInvoices(paymentMethod.getInvoices());
+        paymentMethodRepository.save(paymentMethodToUpdate);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable int id){
+        paymentMethodRepository.deleteById(id);
     }
 
 }

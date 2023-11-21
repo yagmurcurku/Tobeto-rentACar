@@ -1,5 +1,6 @@
 package com.tobeto.rentACar.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class PaymentMethod {
 
 
     @OneToMany(mappedBy = "paymentMethod")
+    @JsonIgnore
     private List<Invoice> invoices;
 
 }

@@ -36,6 +36,7 @@ public class RolesController {
         Role roleToUpdate = roleRepository.findById(role.getId()).orElseThrow();
         roleToUpdate.setName(role.getName());
         roleToUpdate.setEmployees(role.getEmployees());
+        roleRepository.save(roleToUpdate);
     }
 
     @DeleteMapping("{id}")
