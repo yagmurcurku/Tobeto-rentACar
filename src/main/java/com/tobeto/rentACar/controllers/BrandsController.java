@@ -25,10 +25,10 @@ public class BrandsController {
         List<Brand> brandList = brandRepository.findAll();
         List<GetBrandListResponse> brandListResponses = new ArrayList<GetBrandListResponse>();
         for (Brand brand: brandList) {
-            GetBrandListResponse brandListResponse = new GetBrandListResponse();
-            brandListResponse.setId(brand.getId());
-            brandListResponse.setName(brand.getName());
-            brandListResponses.add(brandListResponse);
+            GetBrandListResponse brandResponse = new GetBrandListResponse();
+            brandResponse.setId(brand.getId());
+            brandResponse.setName(brand.getName());
+            brandListResponses.add(brandResponse);
         }
         return brandListResponses;
     }
@@ -56,6 +56,7 @@ public class BrandsController {
 
         Brand brandToUpdate = brandRepository.findById(updateBrandRequest.getId()).orElseThrow();
         brandToUpdate.setName(updateBrandRequest.getName());
+
         //brandToUpdate.setModels(updateBrandRequest.getModels());
         brandRepository.save(brandToUpdate);
     }
