@@ -1,9 +1,14 @@
 package com.tobeto.rentACar.controllers;
 
+import com.tobeto.rentACar.dtos.requests.car.AddCarRequest;
+import com.tobeto.rentACar.dtos.requests.car.UpdateCarRequest;
+import com.tobeto.rentACar.dtos.responses.car.GetCarListResponse;
+import com.tobeto.rentACar.dtos.responses.car.GetCarResponse;
 import com.tobeto.rentACar.entities.Car;
 import com.tobeto.rentACar.repositories.CarRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,28 +22,49 @@ public class CarsController {
     }
 
     @GetMapping
-    public List<Car> getAll(){
-        return carRepository.findAll();
+    public List<GetCarListResponse> getAll(){
+        List<Car> carList = carRepository.findAll();
+        List<GetCarListResponse> carListResponses = new ArrayList<GetCarListResponse>();
+        for (Car car: carList) {
+            GetCarListResponse carResponse = new GetCarListResponse();
+            carResponse.setId(car.getId());
+            carResponse.setPlate(car.getPlate());
+            carResponse.setDailyPrice(car.getDailyPrice());
+            carResponse.setState(car.isState());
+            carResponse.setModel(car.getModel());
+            carListResponses.add(carResponse);
+        }
+        return carListResponses;
     }
 
     @GetMapping("{id}")
-    public Car getById(@PathVariable int id){
-        return carRepository.findById(id).orElseThrow();
+    public GetCarResponse getById(@PathVariable int id){
+        Car car = carRepository.findById(id).orElseThrow();
+        GetCarResponse dto = new GetCarResponse();
+        dto.setPlate(car.getPlate());
+        dto.setDailyPrice(car.getDailyPrice());
+        dto.setState(car.isState());
+        dto.setModel(car.getModel());
+        return dto;
     }
 
     @PostMapping
-    public void add(@RequestBody Car car){
+    public void add(@RequestBody AddCarRequest addCarRequest){
+        Car car = new Car();
+        car.setPlate(addCarRequest.getPlate());
+        car.setDailyPrice(addCarRequest.getDailyPrice());
+        car.setState(addCarRequest.isState());
+        car.setModel(addCarRequest.getModel());
         carRepository.save(car);
     }
 
     @PutMapping
-    public void update(@RequestBody Car car){
-        Car carToUpdate = carRepository.findById(car.getId()).orElseThrow();
-        carToUpdate.setModel(car.getModel());
-        carToUpdate.setState(car.isState());
-        carToUpdate.setPlate(car.getPlate());
-        carToUpdate.setRentals(car.getRentals());
-        carToUpdate.setDailyPrice(car.getDailyPrice());
+    public void update(@RequestBody UpdateCarRequest updateCarRequest){
+        Car carToUpdate = carRepository.findById(updateCarRequest.getId()).orElseThrow();
+        carToUpdate.setModel(updateCarRequest.getModel());
+        carToUpdate.setState(updateCarRequest.isState());
+        carToUpdate.setPlate(updateCarRequest.getPlate());
+        carToUpdate.setDailyPrice(updateCarRequest.getDailyPrice());
         carRepository.save(carToUpdate);
     }
 
