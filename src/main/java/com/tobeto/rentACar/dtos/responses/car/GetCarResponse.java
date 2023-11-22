@@ -14,4 +14,5 @@ public class GetCarResponse {
     private double dailyPrice;
     private boolean state;
     private Model model;
+
 }
