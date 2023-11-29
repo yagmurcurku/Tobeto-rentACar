@@ -9,8 +9,8 @@ import com.tobeto.rentACar.services.dtos.responses.brand.GetBrandListResponse;
 import com.tobeto.rentACar.services.dtos.responses.brand.GetBrandResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -31,7 +31,9 @@ public class BrandManager implements BrandService {
 
     @Override
     public void update(UpdateBrandRequest updateBrandRequest) {
-
+        Brand brandToUpdate = brandRepository.findById(updateBrandRequest.getId()).orElseThrow();
+        brandToUpdate.setName(updateBrandRequest.getName());
+        brandRepository.save(brandToUpdate);
     }
 
     @Override
@@ -41,7 +43,15 @@ public class BrandManager implements BrandService {
 
     @Override
     public List<GetBrandListResponse> getAll() {
-        return null;
+        List<Brand> brandList = brandRepository.findAll();
+        List<GetBrandListResponse> brandListResponses = new ArrayList<GetBrandListResponse>();
+        for (Brand brand: brandList) {
+            GetBrandListResponse brandResponse = new GetBrandListResponse();
+            brandResponse.setId(brand.getId());
+            brandResponse.setName(brand.getName());
+            brandListResponses.add(brandResponse);
+        }
+        return brandListResponses;
     }
 
     @Override

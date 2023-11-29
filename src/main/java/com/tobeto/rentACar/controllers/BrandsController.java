@@ -20,6 +20,11 @@ public class BrandsController {
 
     private final BrandService brandService;
 
+    @GetMapping
+    public List<GetBrandListResponse> getAll(){
+        return brandService.getAll();
+    }
+
     @GetMapping("{id}")
     public GetBrandResponse getById(@PathVariable int id){
         return brandService.getById(id);
@@ -28,6 +33,16 @@ public class BrandsController {
     @PostMapping
     public void add(@RequestBody AddBrandRequest request){
         brandService.add(request);
+    }
+
+    @PutMapping
+    public void update(@RequestBody UpdateBrandRequest updateBrandRequest){
+        brandService.update(updateBrandRequest);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable int id){
+        brandService.delete(id);
     }
 
 
