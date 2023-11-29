@@ -1,9 +1,9 @@
 package com.tobeto.rentACar.controllers;
 
-import com.tobeto.rentACar.dtos.requests.rental.AddRentalRequest;
-import com.tobeto.rentACar.dtos.requests.rental.UpdateRentalRequest;
-import com.tobeto.rentACar.dtos.responses.rental.GetRentalListResponse;
-import com.tobeto.rentACar.dtos.responses.rental.GetRentalResponse;
+import com.tobeto.rentACar.services.dtos.requests.rental.AddRentalRequest;
+import com.tobeto.rentACar.services.dtos.requests.rental.UpdateRentalRequest;
+import com.tobeto.rentACar.services.dtos.responses.rental.GetRentalListResponse;
+import com.tobeto.rentACar.services.dtos.responses.rental.GetRentalResponse;
 import com.tobeto.rentACar.entities.Model;
 import com.tobeto.rentACar.entities.Rental;
 import com.tobeto.rentACar.repositories.RentalRepository;

@@ -1,9 +1,9 @@
 package com.tobeto.rentACar.controllers;
 
-import com.tobeto.rentACar.dtos.requests.model.AddModelRequest;
-import com.tobeto.rentACar.dtos.requests.model.UpdateModelRequest;
-import com.tobeto.rentACar.dtos.responses.model.GetModelListResponse;
-import com.tobeto.rentACar.dtos.responses.model.GetModelResponse;
+import com.tobeto.rentACar.services.dtos.requests.model.AddModelRequest;
+import com.tobeto.rentACar.services.dtos.requests.model.UpdateModelRequest;
+import com.tobeto.rentACar.services.dtos.responses.model.GetModelListResponse;
+import com.tobeto.rentACar.services.dtos.responses.model.GetModelResponse;
 import com.tobeto.rentACar.entities.Model;
 import com.tobeto.rentACar.repositories.ModelRepository;
 import org.springframework.web.bind.annotation.*;

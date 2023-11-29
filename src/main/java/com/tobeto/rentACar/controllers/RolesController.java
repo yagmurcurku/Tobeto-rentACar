@@ -1,9 +1,9 @@
 package com.tobeto.rentACar.controllers;
 
-import com.tobeto.rentACar.dtos.requests.role.AddRoleRequest;
-import com.tobeto.rentACar.dtos.requests.role.UpdateRoleRequest;
-import com.tobeto.rentACar.dtos.responses.role.GetRoleListResponse;
-import com.tobeto.rentACar.dtos.responses.role.GetRoleResponse;
+import com.tobeto.rentACar.services.dtos.requests.role.AddRoleRequest;
+import com.tobeto.rentACar.services.dtos.requests.role.UpdateRoleRequest;
+import com.tobeto.rentACar.services.dtos.responses.role.GetRoleListResponse;
+import com.tobeto.rentACar.services.dtos.responses.role.GetRoleResponse;
 import com.tobeto.rentACar.entities.Role;
 import com.tobeto.rentACar.repositories.RoleRepository;
 import org.springframework.web.bind.annotation.*;

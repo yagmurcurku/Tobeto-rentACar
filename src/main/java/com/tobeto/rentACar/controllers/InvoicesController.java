@@ -1,9 +1,9 @@
 package com.tobeto.rentACar.controllers;
 
-import com.tobeto.rentACar.dtos.requests.invoice.AddInvoiceRequest;
-import com.tobeto.rentACar.dtos.requests.invoice.UpdateInvoiceRequest;
-import com.tobeto.rentACar.dtos.responses.invoice.GetInvoiceListResponse;
-import com.tobeto.rentACar.dtos.responses.invoice.GetInvoiceResponse;
+import com.tobeto.rentACar.services.dtos.requests.invoice.AddInvoiceRequest;
+import com.tobeto.rentACar.services.dtos.requests.invoice.UpdateInvoiceRequest;
+import com.tobeto.rentACar.services.dtos.responses.invoice.GetInvoiceListResponse;
+import com.tobeto.rentACar.services.dtos.responses.invoice.GetInvoiceResponse;
 import com.tobeto.rentACar.entities.Invoice;
 import com.tobeto.rentACar.repositories.InvoiceRepository;
 import org.springframework.web.bind.annotation.*;

@@ -1,10 +1,9 @@
 package com.tobeto.rentACar.controllers;
 
-import com.tobeto.rentACar.dtos.requests.employee.AddEmployeeRequest;
-import com.tobeto.rentACar.dtos.requests.employee.UpdateEmployeeRequest;
-import com.tobeto.rentACar.dtos.responses.employee.GetEmployeeListResponse;
-import com.tobeto.rentACar.dtos.responses.employee.GetEmployeeResponse;
-import com.tobeto.rentACar.dtos.responses.location.GetLocationListResponse;
+import com.tobeto.rentACar.services.dtos.requests.employee.AddEmployeeRequest;
+import com.tobeto.rentACar.services.dtos.requests.employee.UpdateEmployeeRequest;
+import com.tobeto.rentACar.services.dtos.responses.employee.GetEmployeeListResponse;
+import com.tobeto.rentACar.services.dtos.responses.employee.GetEmployeeResponse;
 import com.tobeto.rentACar.entities.Employee;
 import com.tobeto.rentACar.repositories.EmployeeRepository;
 import org.springframework.web.bind.annotation.*;

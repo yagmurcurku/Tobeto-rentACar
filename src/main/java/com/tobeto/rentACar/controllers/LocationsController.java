@@ -1,9 +1,9 @@
 package com.tobeto.rentACar.controllers;
 
-import com.tobeto.rentACar.dtos.requests.location.AddLocationRequest;
-import com.tobeto.rentACar.dtos.requests.location.UpdateLocationRequest;
-import com.tobeto.rentACar.dtos.responses.location.GetLocationListResponse;
-import com.tobeto.rentACar.dtos.responses.location.GetLocationResponse;
+import com.tobeto.rentACar.services.dtos.requests.location.AddLocationRequest;
+import com.tobeto.rentACar.services.dtos.requests.location.UpdateLocationRequest;
+import com.tobeto.rentACar.services.dtos.responses.location.GetLocationListResponse;
+import com.tobeto.rentACar.services.dtos.responses.location.GetLocationResponse;
 import com.tobeto.rentACar.entities.Location;
 import com.tobeto.rentACar.repositories.LocationRepository;
 import org.springframework.web.bind.annotation.*;

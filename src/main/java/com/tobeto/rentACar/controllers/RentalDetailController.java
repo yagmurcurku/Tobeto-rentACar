@@ -1,9 +1,9 @@
 package com.tobeto.rentACar.controllers;
 
-import com.tobeto.rentACar.dtos.requests.rentalDetail.AddRentalDetailRequest;
-import com.tobeto.rentACar.dtos.requests.rentalDetail.UpdateRentalDetailRequest;
-import com.tobeto.rentACar.dtos.responses.rentalDetail.GetRentalDetailListResponse;
-import com.tobeto.rentACar.dtos.responses.rentalDetail.GetRentalDetailResponse;
+import com.tobeto.rentACar.services.dtos.requests.rentalDetail.AddRentalDetailRequest;
+import com.tobeto.rentACar.services.dtos.requests.rentalDetail.UpdateRentalDetailRequest;
+import com.tobeto.rentACar.services.dtos.responses.rentalDetail.GetRentalDetailListResponse;
+import com.tobeto.rentACar.services.dtos.responses.rentalDetail.GetRentalDetailResponse;
 import com.tobeto.rentACar.entities.RentalDetail;
 import com.tobeto.rentACar.repositories.RentalDetailRepository;
 import org.springframework.web.bind.annotation.*;

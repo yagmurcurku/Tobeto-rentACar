@@ -1,9 +1,9 @@
 package com.tobeto.rentACar.controllers;
 
-import com.tobeto.rentACar.dtos.requests.user.AddUserRequest;
-import com.tobeto.rentACar.dtos.requests.user.UpdateUserRequest;
-import com.tobeto.rentACar.dtos.responses.user.GetUserListResponse;
-import com.tobeto.rentACar.dtos.responses.user.GetUserResponse;
+import com.tobeto.rentACar.services.dtos.requests.user.AddUserRequest;
+import com.tobeto.rentACar.services.dtos.requests.user.UpdateUserRequest;
+import com.tobeto.rentACar.services.dtos.responses.user.GetUserListResponse;
+import com.tobeto.rentACar.services.dtos.responses.user.GetUserResponse;
 import com.tobeto.rentACar.entities.User;
 import com.tobeto.rentACar.repositories.UserRepository;
 import org.springframework.web.bind.annotation.*;

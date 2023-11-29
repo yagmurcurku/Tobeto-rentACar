@@ -1,9 +1,9 @@
 package com.tobeto.rentACar.controllers;
 
-import com.tobeto.rentACar.dtos.requests.car.AddCarRequest;
-import com.tobeto.rentACar.dtos.requests.car.UpdateCarRequest;
-import com.tobeto.rentACar.dtos.responses.car.GetCarListResponse;
-import com.tobeto.rentACar.dtos.responses.car.GetCarResponse;
+import com.tobeto.rentACar.services.dtos.requests.car.AddCarRequest;
+import com.tobeto.rentACar.services.dtos.requests.car.UpdateCarRequest;
+import com.tobeto.rentACar.services.dtos.responses.car.GetCarListResponse;
+import com.tobeto.rentACar.services.dtos.responses.car.GetCarResponse;
 import com.tobeto.rentACar.entities.Car;
 import com.tobeto.rentACar.repositories.CarRepository;
 import org.springframework.web.bind.annotation.*;
