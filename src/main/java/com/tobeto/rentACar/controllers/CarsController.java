@@ -3,6 +3,7 @@ package com.tobeto.rentACar.controllers;
 import com.tobeto.rentACar.services.abstracts.CarService;
 import com.tobeto.rentACar.services.dtos.requests.car.AddCarRequest;
 import com.tobeto.rentACar.services.dtos.requests.car.UpdateCarRequest;
+import com.tobeto.rentACar.services.dtos.responses.car.GetByCarListResponse;
 import com.tobeto.rentACar.services.dtos.responses.car.GetCarListResponse;
 import com.tobeto.rentACar.services.dtos.responses.car.GetCarResponse;
 import com.tobeto.rentACar.entities.Car;
@@ -44,6 +45,19 @@ public class CarsController {
     public void delete(@PathVariable int id){
         carService.delete(id);
     }
+
+    @GetMapping("/getAllCars")
+    public List<GetByCarListResponse> getAllCars(){
+        return carService.getAllCars();
+    }
+
+
+
+    @GetMapping("/deneme")
+    public List<GetByCarListResponse> getByCarListResponses(@RequestParam double min, @RequestParam double max){
+        return carService.findCarByDailyPriceBetween(min,max);
+    }
+
 
 }
 

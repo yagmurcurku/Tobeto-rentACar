@@ -15,4 +15,6 @@ public interface ModelService {
     void update(UpdateModelRequest updateModelRequest);
     void delete(int id);
 
+    List<GetModelListResponse> getAllModels(double min, double max);
+
 }

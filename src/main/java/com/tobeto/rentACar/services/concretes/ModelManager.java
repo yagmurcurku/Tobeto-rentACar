@@ -5,6 +5,7 @@ import com.tobeto.rentACar.repositories.ModelRepository;
 import com.tobeto.rentACar.services.abstracts.ModelService;
 import com.tobeto.rentACar.services.dtos.requests.model.AddModelRequest;
 import com.tobeto.rentACar.services.dtos.requests.model.UpdateModelRequest;
+import com.tobeto.rentACar.services.dtos.responses.brand.GetBrandResponse;
 import com.tobeto.rentACar.services.dtos.responses.model.GetModelListResponse;
 import com.tobeto.rentACar.services.dtos.responses.model.GetModelResponse;
 import lombok.AllArgsConstructor;
@@ -28,7 +29,8 @@ public class ModelManager implements ModelService {
             modelResponse.setId(model.getId());
             modelResponse.setName(model.getName());
             modelResponse.setYear(model.getYear());
-            modelResponse.setBrand(model.getBrand());
+            //modelResponse.setBrand(model.getBrand());
+            modelResponse.setBrand(new GetBrandResponse(model.getBrand().getName()));
             modelListResponses.add(modelResponse);
         }
         return modelListResponses;
@@ -65,6 +67,11 @@ public class ModelManager implements ModelService {
     @Override
     public void delete(int id) {
         modelRepository.deleteById(id);
+    }
+
+    @Override
+    public List<GetModelListResponse> getAllModels(double min, double max) {
+        return modelRepository.test(min, max);
     }
 
 }

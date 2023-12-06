@@ -46,4 +46,10 @@ public class ModelsController {
     }
 
 
+    @GetMapping("/deneme2")
+    public List<GetModelListResponse> getAllModels(@RequestParam double min, @RequestParam double max){
+        return modelService.getAllModels(min, max);
+    }
+
+
 }

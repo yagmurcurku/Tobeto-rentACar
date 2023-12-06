@@ -7,8 +7,10 @@ import com.tobeto.rentACar.services.dtos.requests.brand.AddBrandRequest;
 import com.tobeto.rentACar.services.dtos.requests.brand.UpdateBrandRequest;
 import com.tobeto.rentACar.services.dtos.responses.brand.GetBrandListResponse;
 import com.tobeto.rentACar.services.dtos.responses.brand.GetBrandResponse;
+import com.tobeto.rentACar.services.dtos.responses.brand.GetByBrandListResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,7 @@ public class BrandManager implements BrandService {
         brandRepository.deleteById(id);
     }
 
+
     @Override
     public List<GetBrandListResponse> getAll() {
         List<Brand> brandList = brandRepository.findAll();
@@ -63,5 +66,34 @@ public class BrandManager implements BrandService {
 
         return dto;
     }
+
+
+    @Override
+    public List<GetByBrandListResponse> getByName(String name) {
+        List<Brand> brands = brandRepository.findAllByNameLike("%"+name+"%"); //Like kullanıldığı için % eklenerek gönderilmeli.
+        List<GetByBrandListResponse> responses = new ArrayList<>();
+        for (Brand b: brands) {
+            GetByBrandListResponse brand = new GetByBrandListResponse();
+            brand.setName(b.getName());
+            responses.add(brand);
+        }
+        return responses;
+    }
+
+    @Override
+    public List<GetByBrandListResponse> getByNameOrId(String name, int id) {
+        List<Brand> brands = brandRepository.findByNameLikeOrIdEquals("%"+name+"%",id);
+        List<GetByBrandListResponse> responses = new ArrayList<>();
+        for (Brand b: brands) {
+            responses.add(new GetByBrandListResponse(b.getName()));
+        }
+        return responses;
+    }
+
+    @Override
+    public List<GetByBrandListResponse> search3(String name) {
+        return brandRepository.search3(name);
+    }
+
 
 }

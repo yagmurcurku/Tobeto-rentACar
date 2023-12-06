@@ -3,6 +3,7 @@ package com.tobeto.rentACar.controllers;
 import com.tobeto.rentACar.services.abstracts.RoleService;
 import com.tobeto.rentACar.services.dtos.requests.role.AddRoleRequest;
 import com.tobeto.rentACar.services.dtos.requests.role.UpdateRoleRequest;
+import com.tobeto.rentACar.services.dtos.responses.role.GetRoleByGenderResponse;
 import com.tobeto.rentACar.services.dtos.responses.role.GetRoleListResponse;
 import com.tobeto.rentACar.services.dtos.responses.role.GetRoleResponse;
 import com.tobeto.rentACar.entities.Role;
@@ -43,6 +44,27 @@ public class RolesController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable int id){
         roleService.delete(id);
+    }
+
+    @GetMapping("/getByName")
+    public List<GetRoleResponse> getByName(@RequestParam String name){
+        return roleService.getByName(name);
+    }
+
+    @GetMapping("/getByNameNot")
+    public List<GetRoleResponse> getByNameNotLike(@RequestParam String name){
+        return roleService.getByNameNotLike(name);
+    }
+
+
+    @GetMapping("/getAllRole")
+    public List<GetRoleResponse> findAllRole(@RequestParam String name){
+        return roleService.getAllRole(name);
+    }
+
+    @GetMapping("/getRoleByGender")
+    public List<GetRoleByGenderResponse> getRoleByGender(@RequestParam String gender){
+        return roleService.getRoleByGender(gender);
     }
 
 }

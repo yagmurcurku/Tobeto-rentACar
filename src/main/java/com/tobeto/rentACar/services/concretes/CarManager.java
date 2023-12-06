@@ -5,8 +5,10 @@ import com.tobeto.rentACar.repositories.CarRepository;
 import com.tobeto.rentACar.services.abstracts.CarService;
 import com.tobeto.rentACar.services.dtos.requests.car.AddCarRequest;
 import com.tobeto.rentACar.services.dtos.requests.car.UpdateCarRequest;
+import com.tobeto.rentACar.services.dtos.responses.car.GetByCarListResponse;
 import com.tobeto.rentACar.services.dtos.responses.car.GetCarListResponse;
 import com.tobeto.rentACar.services.dtos.responses.car.GetCarResponse;
+import com.tobeto.rentACar.services.dtos.responses.model.GetModelListResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -69,6 +71,25 @@ public class CarManager implements CarService {
     @Override
     public void delete(int id) {
         carRepository.deleteById(id);
+    }
+
+    @Override
+    public List<GetByCarListResponse> getAllCars() {
+        return carRepository.getAll();
+    }
+
+    @Override
+    public List<GetByCarListResponse> findCarByDailyPriceBetween(Double min, Double max) {
+        List<Car> cars = this.carRepository.findCarByDailyPriceBetween(min, max);
+        List<GetByCarListResponse> carList = new ArrayList<>();
+        for (Car car: cars) {
+            GetByCarListResponse response = new GetByCarListResponse();
+            response.setId(car.getId());
+            response.setPlate(car.getPlate());
+            response.setModel(new GetModelListResponse(car.getModel().getName()));
+            carList.add(response);
+        }
+        return carList;
     }
 
 }

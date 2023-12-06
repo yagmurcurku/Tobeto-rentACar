@@ -5,6 +5,7 @@ import com.tobeto.rentACar.repositories.RoleRepository;
 import com.tobeto.rentACar.services.abstracts.RoleService;
 import com.tobeto.rentACar.services.dtos.requests.role.AddRoleRequest;
 import com.tobeto.rentACar.services.dtos.requests.role.UpdateRoleRequest;
+import com.tobeto.rentACar.services.dtos.responses.role.GetRoleByGenderResponse;
 import com.tobeto.rentACar.services.dtos.responses.role.GetRoleListResponse;
 import com.tobeto.rentACar.services.dtos.responses.role.GetRoleResponse;
 import lombok.AllArgsConstructor;
@@ -58,5 +59,38 @@ public class RoleManager implements RoleService {
     public void delete(int id) {
         roleRepository.deleteById(id);
     }
+
+    @Override
+    public List<GetRoleResponse> getByName(String name) {
+        List<Role> roles = roleRepository.findByNameLike("%"+name+"%");
+        List<GetRoleResponse> responses = new ArrayList<>();
+        for (Role role: roles) {
+            GetRoleResponse response = new GetRoleResponse();
+            response.setName(role.getName());
+            responses.add(response);
+        }
+        return responses;
+    }
+
+    @Override
+    public List<GetRoleResponse> getByNameNotLike(String name) {
+        List<Role> roles = roleRepository.findByNameNotLike("%"+name+"%");
+        List<GetRoleResponse> responses = new ArrayList<>();
+        for (Role role: roles) {
+            responses.add(new GetRoleResponse(role.getName()));
+        }
+        return responses;
+    }
+
+    @Override
+    public List<GetRoleResponse> getAllRole(String name) {
+        return roleRepository.findAllRole(name);
+    }
+
+    @Override
+    public List<GetRoleByGenderResponse> getRoleByGender(String gender) {
+        return roleRepository.findByGender("%"+gender+"%");
+    }
+
 
 }
