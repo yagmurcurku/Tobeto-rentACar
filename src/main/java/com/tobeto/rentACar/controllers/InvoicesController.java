@@ -3,13 +3,17 @@ package com.tobeto.rentACar.controllers;
 import com.tobeto.rentACar.services.abstracts.InvoiceService;
 import com.tobeto.rentACar.services.dtos.requests.invoice.AddInvoiceRequest;
 import com.tobeto.rentACar.services.dtos.requests.invoice.UpdateInvoiceRequest;
+import com.tobeto.rentACar.services.dtos.responses.invoice.GetByInvoiceResponse;
+import com.tobeto.rentACar.services.dtos.responses.invoice.GetInvoiceByDateResponse;
 import com.tobeto.rentACar.services.dtos.responses.invoice.GetInvoiceListResponse;
 import com.tobeto.rentACar.services.dtos.responses.invoice.GetInvoiceResponse;
 import com.tobeto.rentACar.entities.Invoice;
 import com.tobeto.rentACar.repositories.InvoiceRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +47,21 @@ public class InvoicesController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable int id){
         invoiceService.delete(id);
+    }
+
+    @GetMapping("/getByTotalPrice")
+    public List<GetByInvoiceResponse> getByTotalPrice(@RequestParam double totalPrice){
+        return invoiceService.getByTotalPrice(totalPrice);
+    }
+
+    @GetMapping("/getByInvoiceYear")
+    public List<GetByInvoiceResponse> getByInvoiceYear(@RequestParam LocalDate date){
+        return invoiceService.getByInvoiceDate(date);
+    }
+
+    @GetMapping("/getInvoiceByDate")
+    public List<GetInvoiceByDateResponse> getBy(@RequestParam LocalDate startDate, LocalDate endDate){
+        return invoiceService.getInvoiceByDate(startDate, endDate);
     }
 
 }

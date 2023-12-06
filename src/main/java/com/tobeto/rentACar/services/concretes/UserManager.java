@@ -5,6 +5,7 @@ import com.tobeto.rentACar.repositories.UserRepository;
 import com.tobeto.rentACar.services.abstracts.UserService;
 import com.tobeto.rentACar.services.dtos.requests.user.AddUserRequest;
 import com.tobeto.rentACar.services.dtos.requests.user.UpdateUserRequest;
+import com.tobeto.rentACar.services.dtos.responses.user.GetByUserResponse;
 import com.tobeto.rentACar.services.dtos.responses.user.GetUserListResponse;
 import com.tobeto.rentACar.services.dtos.responses.user.GetUserResponse;
 import lombok.AllArgsConstructor;
@@ -69,6 +70,46 @@ public class UserManager implements UserService {
     @Override
     public void delete(int id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<GetUserResponse> getByPhoneNotNull() {
+        List<User> users = userRepository.findByPhoneIsNotNull();
+        List<GetUserResponse> responses = new ArrayList<>();
+        for (User user: users) {
+            GetUserResponse response = new GetUserResponse();
+            response.setFirstName(user.getFirstName());
+            response.setLastName(user.getLastName());
+            response.setEmail(user.getEmail());
+            response.setPhone(user.getPhone());
+            responses.add(response);
+        }
+        return responses;
+    }
+
+    @Override
+    public List<GetUserResponse> getByPhoneNull() {
+        List<User> users = userRepository.findByPhoneIsNull();
+        List<GetUserResponse> responses = new ArrayList<>();
+        for (User user: users) {
+            GetUserResponse response = new GetUserResponse();
+            response.setPhone(user.getPhone());
+            response.setFirstName(user.getFirstName());
+            response.setLastName(user.getLastName());
+            response.setEmail(user.getEmail());
+            responses.add(response);
+        }
+        return responses;
+    }
+
+    @Override
+    public List<GetByUserResponse> getUserByCar(int carId) {
+        return userRepository.getUserByCar(carId);
+    }
+
+    @Override
+    public List<GetByUserResponse> getUserByState(boolean state) {
+        return userRepository.getUserByState(state);
     }
 
 }

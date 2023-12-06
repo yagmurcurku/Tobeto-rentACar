@@ -24,5 +24,20 @@ public interface CarRepository extends JpaRepository<Car,Integer> {
 
     List<Car> findCarByDailyPriceBetween(Double min, Double max);
 
+    List<Car> findByStateTrue();
+
+
+    @Query("SELECT new com.tobeto.rentACar.services.dtos.responses.car.GetByCarListResponse(c.id, c.plate," +
+            "c.dailyPrice, c.state, new com.tobeto.rentACar.services.dtos.responses.model.GetByModel" +
+            "Response(c.model.name, new com.tobeto.rentACar.services.dtos.responses.brand.GetBrand" +
+            "Response(c.model.brand.name))) FROM Car c WHERE c.state=:state")
+    List<GetByCarListResponse> getCarByState(boolean state);
+
+
 }
+/*
+new com.tobeto.rentACar.services.dtos.responses.car.GetByCarListResponse(c.plate," +
+            "c.dailyPrice, c.state, new com.tobeto.rentACar.services.dtos.responses.model.GetByModel" +
+            "Response())
+ */
 //new com.tobeto.rentACar.services.dtos.responses.model.GetModelListResponse(m.name)

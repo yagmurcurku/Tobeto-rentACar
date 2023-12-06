@@ -1,6 +1,7 @@
 package com.tobeto.rentACar.services.dtos.responses.car;
 
 import com.tobeto.rentACar.entities.Model;
+import com.tobeto.rentACar.services.dtos.responses.model.GetByModelResponse;
 import com.tobeto.rentACar.services.dtos.responses.model.GetModelListResponse;
 import com.tobeto.rentACar.services.dtos.responses.model.GetModelResponse;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,9 @@ public class GetByCarListResponse {
     private boolean state;
     //private String modelName;
     //private Model model;      //--> VERİTABANI TABLOSU DIŞA BU ŞEKİLDE AÇILMAMALI !
-    private GetModelListResponse model;      //dto içinde dto kullanılabilir
+    private GetByModelResponse model;      //dto içinde dto kullanılabilir
+
+
 
 
 }

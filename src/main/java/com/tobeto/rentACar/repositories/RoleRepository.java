@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface RoleRepository extends JpaRepository<Role,Integer> {
 
+
     List<Role> findByNameLike(String name);
 
     List<Role> findByNameNotLike(String name);

@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface BrandRepository extends JpaRepository<Brand,Integer> {
 
+
+
     //JPA Derived Query Method  -->[1]<--
     List<Brand> findAllByNameLike(String name);        //--> default olarak liste döndürüyor
     //List olmadan (Brand findByName..) yazılsaydı liste değil bulduğu ilk değeri döndürürdü
@@ -17,6 +19,9 @@ public interface BrandRepository extends JpaRepository<Brand,Integer> {
     //Or yerine And olsaydı hem name benzemeliydi hem de id eşit olmalıydı
     //Şuan Or olduğu için ikisinden biri olsa da entity çekilebiliyor.
 
+
+    boolean existsByName(String name);
+    //varsa true, yoksa false döner
 
         // JPQL     -->[2]<--
         // JPQL = JPA + SQL

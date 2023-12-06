@@ -3,6 +3,7 @@ package com.tobeto.rentACar.controllers;
 import com.tobeto.rentACar.services.abstracts.UserService;
 import com.tobeto.rentACar.services.dtos.requests.user.AddUserRequest;
 import com.tobeto.rentACar.services.dtos.requests.user.UpdateUserRequest;
+import com.tobeto.rentACar.services.dtos.responses.user.GetByUserResponse;
 import com.tobeto.rentACar.services.dtos.responses.user.GetUserListResponse;
 import com.tobeto.rentACar.services.dtos.responses.user.GetUserResponse;
 import com.tobeto.rentACar.entities.User;
@@ -44,5 +45,28 @@ public class UsersController {
     public void delete(@PathVariable int id){
         userService.delete(id);
     }
+
+
+    @GetMapping("/getByPhoneNotNull")
+    public List<GetUserResponse> getByPhoneNotNull(){
+        return userService.getByPhoneNotNull();
+    }
+
+    @GetMapping("/getByPhoneNull")
+    public List<GetUserResponse> getByPhoneNull(){
+        return userService.getByPhoneNull();
+    }
+
+    @GetMapping("/getUserByCar")
+    public List<GetByUserResponse> getUser(@RequestParam int carId){
+        return userService.getUserByCar(carId);
+    }
+
+
+    @GetMapping("/getUserByState")
+    public List<GetByUserResponse> getUserByState(@RequestParam boolean state){
+        return userService.getUserByState(state);
+    }
+
 
 }

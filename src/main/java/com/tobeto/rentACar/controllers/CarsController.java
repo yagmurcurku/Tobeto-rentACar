@@ -52,10 +52,20 @@ public class CarsController {
     }
 
 
-
-    @GetMapping("/deneme")
+    @GetMapping("/getByPrice")
     public List<GetByCarListResponse> getByCarListResponses(@RequestParam double min, @RequestParam double max){
         return carService.findCarByDailyPriceBetween(min,max);
+    }
+
+    @GetMapping("/getByStateTrue")
+    public List<GetByCarListResponse> getByCarStateTrue(){
+        return carService.getByStateTrue();
+    }
+
+
+    @GetMapping("/getByState")
+    public List<GetByCarListResponse> getByCarState(@RequestParam boolean state){
+        return carService.getByState(state);
     }
 
 

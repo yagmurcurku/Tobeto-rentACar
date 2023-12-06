@@ -5,11 +5,16 @@ import com.tobeto.rentACar.repositories.InvoiceRepository;
 import com.tobeto.rentACar.services.abstracts.InvoiceService;
 import com.tobeto.rentACar.services.dtos.requests.invoice.AddInvoiceRequest;
 import com.tobeto.rentACar.services.dtos.requests.invoice.UpdateInvoiceRequest;
+import com.tobeto.rentACar.services.dtos.responses.car.GetByCarResponse;
+import com.tobeto.rentACar.services.dtos.responses.invoice.GetByInvoiceResponse;
+import com.tobeto.rentACar.services.dtos.responses.invoice.GetInvoiceByDateResponse;
 import com.tobeto.rentACar.services.dtos.responses.invoice.GetInvoiceListResponse;
 import com.tobeto.rentACar.services.dtos.responses.invoice.GetInvoiceResponse;
+import com.tobeto.rentACar.services.dtos.responses.rental.GetByRentalResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +78,39 @@ public class InvoiceManager implements InvoiceService {
     @Override
     public void delete(int id) {
         invoiceRepository.deleteById(id);
+    }
+
+    @Override
+    public List<GetByInvoiceResponse> getByTotalPrice(double totalPrice) {
+        List<Invoice> invoices = invoiceRepository.findByTotalPriceGreaterThanEqual(totalPrice);
+        List<GetByInvoiceResponse> responses = new ArrayList<>();
+        for (Invoice invoice: invoices) {
+            GetByInvoiceResponse response = new GetByInvoiceResponse();
+            response.setTotalPrice(invoice.getTotalPrice());
+            response.setInvoiceDate(invoice.getInvoiceDate());
+            response.setRental(new GetByRentalResponse(new GetByCarResponse(invoice.getRental().getCar().getPlate())));
+            responses.add(response);
+        }
+        return responses;
+    }
+
+    @Override
+    public List<GetByInvoiceResponse> getByInvoiceDate(LocalDate date) {
+        List<Invoice> invoices = invoiceRepository.findByInvoiceDateLessThanEqual(date);
+        List<GetByInvoiceResponse> responses = new ArrayList<>();
+        for (Invoice invoice: invoices) {
+            GetByInvoiceResponse response = new GetByInvoiceResponse();
+            response.setInvoiceDate(invoice.getInvoiceDate());
+            response.setTotalPrice(invoice.getTotalPrice());
+            response.setRental(new GetByRentalResponse(new GetByCarResponse(invoice.getRental().getCar().getPlate())));
+            responses.add(response);
+        }
+        return responses;
+    }
+
+    @Override
+    public List<GetInvoiceByDateResponse> getInvoiceByDate(LocalDate startDate, LocalDate endDate) {
+        return invoiceRepository.getInvoiceByDate(startDate, endDate);
     }
 
 }

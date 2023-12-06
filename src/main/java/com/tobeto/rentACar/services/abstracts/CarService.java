@@ -17,7 +17,8 @@ public interface CarService {
     void update(UpdateCarRequest updateCarRequest);
     void delete(int id);
     List<GetByCarListResponse> getAllCars();
-
     List<GetByCarListResponse> findCarByDailyPriceBetween(Double min, Double max);
+    List<GetByCarListResponse> getByStateTrue();
+    List<GetByCarListResponse> getByState(boolean state);
 
 }

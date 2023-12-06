@@ -8,6 +8,7 @@ import com.tobeto.rentACar.services.dtos.responses.brand.GetBrandResponse;
 import com.tobeto.rentACar.entities.Brand;
 import com.tobeto.rentACar.repositories.BrandRepository;
 import com.tobeto.rentACar.services.dtos.responses.brand.GetByBrandListResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class BrandsController {
     }
 
     @PostMapping
-    public void add(@RequestBody AddBrandRequest request){
+    public void add(@RequestBody @Valid AddBrandRequest request){
         brandService.add(request);
     }
 
