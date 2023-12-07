@@ -60,7 +60,12 @@ public class RentalManager implements RentalService {
 
     @Override
     public void delete(int id) {
-        rentalRepository.deleteById(id);
+        if(rentalRepository.existsById(id)){
+            rentalRepository.deleteById(id);
+        }
+        else{
+            throw new RuntimeException("Bu id'ye ait silinecek bir kiralama verisi bulunamadı !");
+        }
     }
 
 }

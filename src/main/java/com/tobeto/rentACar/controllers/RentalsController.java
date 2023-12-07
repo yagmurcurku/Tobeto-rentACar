@@ -8,6 +8,7 @@ import com.tobeto.rentACar.services.dtos.responses.rental.GetRentalResponse;
 import com.tobeto.rentACar.entities.Model;
 import com.tobeto.rentACar.entities.Rental;
 import com.tobeto.rentACar.repositories.RentalRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +38,7 @@ public class RentalsController {
     }
 
     @PutMapping
-    public void update(@RequestBody UpdateRentalRequest updateRentalRequest){
+    public void update(@RequestBody @Valid UpdateRentalRequest updateRentalRequest){
         rentalService.update(updateRentalRequest);
     }
 
