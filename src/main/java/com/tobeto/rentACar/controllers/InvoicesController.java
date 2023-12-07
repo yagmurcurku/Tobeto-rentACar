@@ -60,8 +60,14 @@ public class InvoicesController {
     }
 
     @GetMapping("/getInvoiceByDate")
-    public List<GetInvoiceByDateResponse> getBy(@RequestParam LocalDate startDate, LocalDate endDate){
+    public List<GetInvoiceByDateResponse> getByDate(@RequestParam LocalDate startDate, LocalDate endDate){
         return invoiceService.getInvoiceByDate(startDate, endDate);
     }
+
+    @GetMapping("/getByDateAndGender")
+    public List<GetInvoiceByDateResponse> getByInvoiceAndDate(@RequestParam LocalDate date, String gender){
+        return invoiceService.getInvoiceByDateAndGender(date, gender);
+    }
+
 
 }

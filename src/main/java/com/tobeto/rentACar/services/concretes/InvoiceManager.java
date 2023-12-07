@@ -113,4 +113,9 @@ public class InvoiceManager implements InvoiceService {
         return invoiceRepository.getInvoiceByDate(startDate, endDate);
     }
 
+    @Override
+    public List<GetInvoiceByDateResponse> getInvoiceByDateAndGender(LocalDate date, String gender) {
+        return invoiceRepository.getInvoiceByGenderAndDate(date, gender);
+    }
+
 }

@@ -16,7 +16,8 @@ public interface RoleRepository extends JpaRepository<Role,Integer> {
     List<Role> findByNameNotLike(String name);
 
 
-    @Query("SELECT new com.tobeto.rentACar.services.dtos.responses.role.GetRoleResponse(r.name) FROM Role r WHERE r.name=:name")
+    @Query("SELECT new com.tobeto.rentACar.services.dtos.responses.role.GetRoleResponse(r.name) FROM " +
+            "Role r WHERE r.name=:name")
     List<GetRoleResponse> findAllRole(String name);
 
 

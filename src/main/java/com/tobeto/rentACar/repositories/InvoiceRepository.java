@@ -29,7 +29,14 @@ public interface InvoiceRepository extends JpaRepository<Invoice,Integer> {
     List<GetInvoiceByDateResponse> getInvoiceByDate(LocalDate startDate, LocalDate endDate);
 
 
-    //ödeme yöntemi
+    //girilen tarih sonrasındaki faturaları kesen çalışanların ve pozisyonlarının cinsiyete göre listesi
+    @Query("SELECT new com.tobeto.rentACar.services.dtos.responses.invoice.GetInvoiceByDateResponse(i.id," +
+            "i.totalPrice, new com.tobeto.rentACar.services.dtos.responses.employee.GetByEmployeeResponse(" +
+            "e.firstName, e.lastName, new com.tobeto.rentACar.services.dtos.responses.role.GetRoleResponse(" +
+            "r.name))) FROM Invoice i INNER JOIN i.employee e INNER JOIN e.role r WHERE i.invoiceDate>:date " +
+            "AND e.gender=:gender")
+    List<GetInvoiceByDateResponse> getInvoiceByGenderAndDate(LocalDate date, String gender);
+
 
 
 

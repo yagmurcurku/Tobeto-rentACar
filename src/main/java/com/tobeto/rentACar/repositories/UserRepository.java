@@ -9,8 +9,11 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
 
+    //telefon numarası null olmayan user'lar
     List<User> findByPhoneIsNotNull();
 
+
+    //telefon numarası null olan user'lar
     List<User> findByPhoneIsNull();
 
 

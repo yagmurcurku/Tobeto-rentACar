@@ -21,5 +21,6 @@ public interface InvoiceService {
     List<GetByInvoiceResponse> getByTotalPrice(double totalPrice);
     List<GetByInvoiceResponse> getByInvoiceDate(LocalDate date);
     List<GetInvoiceByDateResponse> getInvoiceByDate(LocalDate startDate, LocalDate endDate);
+    List<GetInvoiceByDateResponse> getInvoiceByDateAndGender(LocalDate date, String gender);
 
 }
