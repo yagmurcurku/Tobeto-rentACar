@@ -15,5 +15,11 @@ public class GlobalExceptionHandler {
         return "Validasyon hatası";
     }
 
+    @ExceptionHandler({RuntimeException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleValidationException(){
+        return "Çalışma zamanı hatası";
+    }
+
 
 }
