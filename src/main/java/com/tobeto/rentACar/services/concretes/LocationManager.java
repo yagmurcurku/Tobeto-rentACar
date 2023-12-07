@@ -55,6 +55,9 @@ public class LocationManager implements LocationService {
 
     @Override
     public void update(UpdateLocationRequest updateLocationRequest) {
+        if(locationRepository.existsByOfficePhone(updateLocationRequest.getOfficePhone())){
+            throw new RuntimeException("Bu telefon numarası daha önce başka bir şube tarafından eklendi !");
+        }
         Location locationToUpdate = locationRepository.findById(updateLocationRequest.getId()).orElseThrow();
         locationToUpdate.setCity(updateLocationRequest.getCity());
         locationToUpdate.setBranchOffice(updateLocationRequest.getBranchOffice());
@@ -64,7 +67,13 @@ public class LocationManager implements LocationService {
 
     @Override
     public void delete(int id) {
-        locationRepository.deleteById(id);
+        if(locationRepository.existsById(id)){
+            locationRepository.deleteById(id);
+        }else{
+            throw new RuntimeException("Bu id'ye ait silinecek bir lokasyon bulunamadı !");
+        }
     }
+
+
 
 }

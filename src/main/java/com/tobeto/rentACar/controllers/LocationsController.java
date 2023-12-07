@@ -7,6 +7,7 @@ import com.tobeto.rentACar.services.dtos.responses.location.GetLocationListRespo
 import com.tobeto.rentACar.services.dtos.responses.location.GetLocationResponse;
 import com.tobeto.rentACar.entities.Location;
 import com.tobeto.rentACar.repositories.LocationRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,7 @@ public class LocationsController {
     }
 
     @PutMapping
-    public void update(@RequestBody UpdateLocationRequest updateLocationRequest){
+    public void update(@RequestBody @Valid UpdateLocationRequest updateLocationRequest){
         locationService.update(updateLocationRequest);
     }
 
