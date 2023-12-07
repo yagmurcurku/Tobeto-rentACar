@@ -43,6 +43,9 @@ public class RoleManager implements RoleService {
 
     @Override
     public void add(AddRoleRequest addRoleRequest) {
+        if(roleRepository.existsByName(addRoleRequest.getName())){
+            throw new RuntimeException("Daha önce bu isimde bir rol oluşturuldu !");
+        }
         Role role = new Role();
         role.setName(addRoleRequest.getName());
         roleRepository.save(role);

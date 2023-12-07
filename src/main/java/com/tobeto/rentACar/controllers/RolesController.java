@@ -8,6 +8,7 @@ import com.tobeto.rentACar.services.dtos.responses.role.GetRoleListResponse;
 import com.tobeto.rentACar.services.dtos.responses.role.GetRoleResponse;
 import com.tobeto.rentACar.entities.Role;
 import com.tobeto.rentACar.repositories.RoleRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class RolesController {
     }
 
     @PostMapping
-    public void add(@RequestBody AddRoleRequest addRoleRequest){
+    public void add(@RequestBody @Valid AddRoleRequest addRoleRequest){
         roleService.add(addRoleRequest);
     }
 
