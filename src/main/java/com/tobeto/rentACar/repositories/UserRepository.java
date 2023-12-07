@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
 
+    boolean existsByEmail(String email);
+
     //telefon numarası null olmayan user'lar
     List<User> findByPhoneIsNotNull();
 

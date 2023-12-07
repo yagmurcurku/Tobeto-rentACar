@@ -8,6 +8,7 @@ import com.tobeto.rentACar.services.dtos.responses.user.GetUserListResponse;
 import com.tobeto.rentACar.services.dtos.responses.user.GetUserResponse;
 import com.tobeto.rentACar.entities.User;
 import com.tobeto.rentACar.repositories.UserRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class UsersController {
     }
 
     @PostMapping
-    public void add(@RequestBody AddUserRequest addUserRequest){
+    public void add(@RequestBody @Valid AddUserRequest addUserRequest){
         userService.add(addUserRequest);
     }
 

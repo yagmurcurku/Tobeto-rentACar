@@ -49,6 +49,9 @@ public class UserManager implements UserService {
 
     @Override
     public void add(AddUserRequest addUserRequest) {
+        if(userRepository.existsByEmail(addUserRequest.getEmail())){
+            throw new RuntimeException("Bu email zaten kullanılıyor! Başka bir email girin.");
+        }
         User user = new User();
         user.setFirstName(addUserRequest.getFirstName());
         user.setLastName(addUserRequest.getLastName());
