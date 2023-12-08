@@ -8,6 +8,7 @@ import com.tobeto.rentACar.services.dtos.responses.car.GetCarListResponse;
 import com.tobeto.rentACar.services.dtos.responses.car.GetCarResponse;
 import com.tobeto.rentACar.entities.Car;
 import com.tobeto.rentACar.repositories.CarRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class CarsController {
     }
 
     @PostMapping
-    public void add(@RequestBody AddCarRequest addCarRequest){
+    public void add(@RequestBody @Valid AddCarRequest addCarRequest){
         carService.add(addCarRequest);
     }
 

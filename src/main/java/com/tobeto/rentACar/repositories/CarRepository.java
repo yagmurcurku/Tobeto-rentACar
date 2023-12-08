@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car,Integer> {
 
+    boolean existsByPlate(String plate);
 
     //zaten entities.car'daki @JoinColumn ile join geldiğinde join kolonu olarak hangi kolonu
     //kullanacağı programa bildirildi. Bu yüzden sql'deki gibi uzun uzun join yapmaya gerek yok
