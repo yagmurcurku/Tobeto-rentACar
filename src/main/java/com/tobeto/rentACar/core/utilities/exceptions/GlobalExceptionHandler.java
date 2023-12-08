@@ -1,6 +1,7 @@
 package com.tobeto.rentACar.core.utilities.exceptions;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -17,8 +18,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({RuntimeException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleRuntimeException(){
-        return "Çalışma zamanı hatası";
+    public ResponseEntity<String> handleRuntimeException(RuntimeException exception){
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 
