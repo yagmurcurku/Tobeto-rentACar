@@ -52,6 +52,9 @@ public class CarManager implements CarService {
 
     @Override
     public void add(AddCarRequest addCarRequest) {
+        if(carRepository.existsByPlate(addCarRequest.getPlate())){
+            throw new RuntimeException("Bu plaka daha önce başka bir araca eklendi !");
+        }
         Car car = new Car();
         car.setPlate(addCarRequest.getPlate());
         car.setDailyPrice(addCarRequest.getDailyPrice());
