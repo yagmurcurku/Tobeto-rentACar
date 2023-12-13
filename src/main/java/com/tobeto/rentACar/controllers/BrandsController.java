@@ -10,6 +10,7 @@ import com.tobeto.rentACar.repositories.BrandRepository;
 import com.tobeto.rentACar.services.dtos.responses.brand.GetByBrandListResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class BrandsController {
     }
 
     @PostMapping
+    @ResponseStatus(code= HttpStatus.CREATED)
     public void add(@RequestBody @Valid AddBrandRequest request){
         brandService.add(request);
     }
@@ -56,7 +58,6 @@ public class BrandsController {
     public List<GetByBrandListResponse> getByNameOrId(@RequestParam String name, @RequestParam int id){
         return this.brandService.getByNameOrId(name,id);
     }
-
 
     @GetMapping("/search")
     public List<GetByBrandListResponse> getAllBySql(@RequestParam String name){

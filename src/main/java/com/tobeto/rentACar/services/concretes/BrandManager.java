@@ -1,5 +1,6 @@
 package com.tobeto.rentACar.services.concretes;
 
+import com.tobeto.rentACar.core.utilities.mappers.ModelMapperService;
 import com.tobeto.rentACar.entities.Brand;
 import com.tobeto.rentACar.repositories.BrandRepository;
 import com.tobeto.rentACar.services.abstracts.BrandService;
@@ -14,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
 public class BrandManager implements BrandService {
 
     private final BrandRepository brandRepository;
+    private final ModelMapperService modelMapperService;
 
     @Override
     public void add(AddBrandRequest request) {
@@ -29,8 +32,14 @@ public class BrandManager implements BrandService {
             throw new RuntimeException("Aynı isimle iki marka eklenemez");
         }
 
+        /*
         Brand brand = new Brand();
         brand.setName(request.getName());
+         */
+
+        Brand brand = this.modelMapperService.forRequest()
+                        .map(request, Brand.class);
+
         brandRepository.save(brand);
     }
 
@@ -49,6 +58,7 @@ public class BrandManager implements BrandService {
 
     @Override
     public List<GetBrandListResponse> getAll() {
+        /*
         List<Brand> brandList = brandRepository.findAll();
         List<GetBrandListResponse> brandListResponses = new ArrayList<GetBrandListResponse>();
         for (Brand brand: brandList) {
@@ -57,6 +67,15 @@ public class BrandManager implements BrandService {
             brandResponse.setName(brand.getName());
             brandListResponses.add(brandResponse);
         }
+         */
+
+        List<Brand> brandList = brandRepository.findAll();
+
+        List<GetBrandListResponse> brandListResponses = brandList.stream()
+                .map(brand -> this.modelMapperService.forResponse()
+                        .map(brand, GetBrandListResponse.class))
+                .collect(Collectors.toList());
+
         return brandListResponses;
     }
 
