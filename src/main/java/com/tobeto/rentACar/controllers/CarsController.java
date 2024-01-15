@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/cars")
 @AllArgsConstructor
+@CrossOrigin
 public class CarsController {
 
     private final CarService carService;
@@ -27,7 +28,7 @@ public class CarsController {
         return carService.getAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/getById/{id}")
     public GetCarResponse getById(@PathVariable int id){
         return carService.getById(id);
     }
